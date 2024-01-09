@@ -1,0 +1,129 @@
+:root {
+  --primary-color: rgba(8, 46, 5, 0.5);
+  --red-color: rgba(233, 72, 8, 0.8);
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  background-position: center;
+  background-size: 100vw;
+  background-image: url("images/DUA.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+  color: whitesmoke;
+}
+/* SmartPhone */
+@media screen and (max-width: 499px) {
+}
+/* Tablets */
+@media screen and (max-width: 899px) and (min-width: 500px) {
+}
+/* Laptop */
+@media screen and (min-width: 900px) and (max-width: 1319px) {
+}
+
+/* Desktop */
+@media screen and (min-width: 1319px) {
+}
+
+.row {
+  width: 100vw;
+}
+
+header {
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(black, var(green));
+
+  color: white;
+}
+
+.neon-text {
+  color: #fff; /* Text color */
+  text-transform: uppercase; /* Optional: Uppercase text for a neon sign effect */
+
+  /* Neon glow effect using text-shadow */
+  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
+    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
+
+  /* Optional animation for a flickering effect */
+  animation: flicker 2s infinite alternate;
+}
+
+.neon-img {
+  box-shadow: 0 0 10px rgba(235, 215, 5, 0.8), 0 0 20px rgba(235, 215, 5, 0.8),
+    0 0 30px rgba(235, 215, 5, 0.8), 0 0 40px rgba(235, 215, 5, 0.8);
+  animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.phone-number {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the parent element's text color */
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+.button {
+  width: inherit;
+  background-color: azure;
+  text-align: left;
+  border: none;
+  transition: 1.5s ease-in-out;
+  -moz-transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 20vw;
+}
+
+button:hover {
+  text-align: center;
+  color: red;
+}
+
+img {
+  width: 15vw;
+  background-color: whitesmoke;
+  border: #fff 2px;
+  border-radius: 10%;
+}
+
+.footer {
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  
+  color: white;
+  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
+    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
+}
