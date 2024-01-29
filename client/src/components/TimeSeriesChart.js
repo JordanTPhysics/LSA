@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import Chart, { TimeScale } from 'chart.js/auto';
 import { format } from 'date-fns';
+import 'chartjs-adapter-moment';
+
+Chart.register(TimeScale)
 
 const TimeSeriesChart = ({ data, yAxisLabel }) => {
   const chartRef = useRef(null);
@@ -9,21 +12,29 @@ const TimeSeriesChart = ({ data, yAxisLabel }) => {
     const ctx = chartRef.current.getContext('2d');
 
     const chart = new Chart(ctx, {
-      type: 'scatter', // Use 'scatter' type for individual points
+      type: 'scatter',
       data: {
         datasets: [
           { label: 'Fajr', data: mapData('Fajr'), pointBackgroundColor: 'red' },
           { label: 'Shuruq', data: mapData('Shuruq'), pointBackgroundColor: 'orange' },
-          { label: 'Dhuhr', data: mapData('Dhuhr'), pointBackgroundColor: 'yellow' },
+          { label: 'Dhuhr', data: mapData('Dhuhr'), pointBackgroundColor: 'white' },
           { label: 'Asr', data: mapData('Asr'), pointBackgroundColor: 'green' },
-          { label: 'Maghrib', data: mapData('Maghrib'), pointBackgroundColor: 'blue' },
-          { label: 'Isha', data: mapData('Isha'), pointBackgroundColor: 'purple' },
+          { label: 'Maghrib', data: mapData('Maghrib'), pointBackgroundColor: 'magenta' },
+          { label: 'Isha', data: mapData('Isha'), pointBackgroundColor: 'blue' },
         ],
       },
       options: {
         scales: {
           x: {
-            type: 'linear', // Assume x-axis is numeric for time series
+            type: 'time', 
+            time: {
+              unit: 'day', // Display data on a daily basis
+              parser: 'DD/MM/YYYY', // Use 'DD/MM/YYYY' for UK format
+              tooltipFormat: 'DD/MM/YYYY', // Use 'DD/MM/YYYY' for UK format in tooltips
+              displayFormats: {
+                  day: 'YYYY-MM-DD' // Format of the displayed date
+              },
+            },
             title: {
               display: true,
               text: 'Date',
@@ -33,6 +44,7 @@ const TimeSeriesChart = ({ data, yAxisLabel }) => {
             title: {
               display: true,
               text: yAxisLabel,
+              
             },
             ticks: {
               // Use callback to format Y-axis labels
@@ -47,7 +59,11 @@ const TimeSeriesChart = ({ data, yAxisLabel }) => {
               label: (context) => {
                 const label = context.dataset.label || '';
                 if (label) {
-                  return `${label}: ${context.parsed.y}`;
+                  
+                  const minutes = parseInt(context.parsed.y.toString().split(".")[1].substring(0,2)) * 60 / 100;
+                  const time = context.parsed.y.toString().split(".")[0] + ":" + minutes.toString().substring(0,2);
+                  const date = format(context.parsed.x, 'dd/MM');
+                  return `${date} \n ${label}: ${time}`;
                 }
                 return `${context.parsed.y}`;
               },
@@ -69,8 +85,8 @@ const TimeSeriesChart = ({ data, yAxisLabel }) => {
 
   const mapData = (field) => {
     return data.map(entry => ({
-      x: data.indexOf(entry), // Use the index as the x-value for each day
-      y: convertTimeStringToInteger(entry[field], field),
+      x: entry.Date, // Use the index as the x-value for each day
+      y: entry[field] ? convertTimeStringToInteger(entry[field], field) : null,
     }));
   };
 

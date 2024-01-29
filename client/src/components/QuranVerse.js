@@ -16,7 +16,7 @@ const QuranVerse = ({ verseData }) => {
             Original Text: {word.text} | Translation: {word.translation.text} | Transliteration: {word.transliteration.text}
           </p>
         </div>
-      ))}
+)) }
     </div>
   );
 };

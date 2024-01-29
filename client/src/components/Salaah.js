@@ -13,19 +13,6 @@ const convertTimeStringToInteger = (timeString, salaah) => {
   }
 };
 
-function selectTimes(salaahName, salaahTime) {
-  switch (salaahName) {
-    case "Fajr":
-    case "Sunrise":
-    case "Dhuhr":
-    case "Asr":
-    case "Maghrib":
-    case "Isha":
-      return convertTimeStringToInteger(salaahTime);
-    default:
-      return null;
-  }
-}
 
 function parseCSV(csvData) {
   // Split the CSV data into rows
@@ -53,6 +40,7 @@ function parseCSV(csvData) {
 
 const Salaah = () => {
   const [salaahTimes, setSalaahTimes] = useState([]);
+  const [todaySalaahTimes, setTodaySalaahTimes] = useState(null);
 
   useEffect(() => {
     const fetchSalaahTimes = async () => {
@@ -64,7 +52,6 @@ const Salaah = () => {
 
         const data = await response.text();
         const parsedData = parseCSV(data);
-        console.log(parsedData);
 
         setSalaahTimes(parsedData);
       } catch (error) {
@@ -74,18 +61,41 @@ const Salaah = () => {
     fetchSalaahTimes();
   }, []);
 
-  const getJamaatTimesToday = () => {
+  useEffect(() => {
     const today = new Date();
-    var todayTimes = salaahTimes.filter((entry) => {
-      const entryDate = new Date(entry.Date);
-      if (entryDate.getDate() === today.getDate() && entryDate.getMonth() === today.getMonth()) {
-        return { Fajr: entry.Fajr, Shuruq: entry.Shuruq, Dhuhr: entry.Dhuhr, Asr: entry.Asr, Maghrib: entry.Maghrib, Isha: entry.Isha };
-      }
-    });
-  }
+
+// Get day, month, and year components
+const day = today.getDate();
+const month = today.getMonth() + 1; // Months are zero-indexed, so add 1
+const year = today.getFullYear();
+
+// Ensure day and month are formatted as two digits
+const formattedDay = day < 10 ? `0${day}` : day;
+const formattedMonth = month < 10 ? `0${month}` : month;
+
+// Create the formatted date string
+const formattedDate = `${formattedDay}/${formattedMonth}/${year}`;
+    const todaySalaahTimes = salaahTimes.find(entry => entry.Date === formattedDate);
+    setTodaySalaahTimes(todaySalaahTimes);
+  }, [salaahTimes]);
+
+  console.log(salaahTimes);
+  console.log(todaySalaahTimes);
+
+  
 
   return (
     <>
+      {/* <div className="row">
+
+          <h3>Today's Salaah Times</h3>
+          <p>Fajr: {todaySalaahTimes.Fajr}</p>
+          <p>Dhuhr: {todaySalaahTimes.Dhuhr}</p>
+          <p>Asr: {todaySalaahTimes.Asr}</p>
+          <p>Maghrib: {todaySalaahTimes.Maghrib}</p>
+          <p>Isha: {todaySalaahTimes.Isha}</p>
+
+        </div> */}
       <div className="row frame">
       <h3> A yearly graph of the Salaah times on the Fylde Coast. Jamaat Timetable found below</h3>
 

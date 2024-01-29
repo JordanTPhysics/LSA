@@ -148,7 +148,7 @@ img {
   height: fit-content;
   align-items: center;
   justify-content: center;
-
+  grid-auto-flow: row;
 
   color: white;
 }
