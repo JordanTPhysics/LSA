@@ -1,5 +1,50 @@
+/* SmartPhone */
+@media screen and (max-width: 499px) {
+    .divider{
+        width: 80vw;
+    }
+    iframe {
+        width: 100vw;
+        height: 70vh;
+      }
+}
+
+/* Tablets */
+@media screen and (max-width: 899px) and (min-width: 500px) {
+    .divider{
+        width: 80vw;
+    }
+    iframe {
+        width: 100vw;
+        height: 70vh;
+      }
+}
+
+/* Laptop */
+@media screen and (min-width: 900px) and (max-width: 1319px) {
+    .divider{
+        width: 80vw;
+    }
+    iframe {
+        width: 210mm;
+        height: 297mm;
+      }
+}
+
+/* Desktop */
+@media screen and (min-width: 1319px) {
+    .divider {
+        width: 30vw;
+    }
+    iframe {
+        width: 210mm;
+        height: 297mm;
+      }
+}
+
+
 .divider {
-    width: 30vw;
+
     height: 0.5vh;
     background-color: goldenrod;
     justify-content: center;
@@ -18,8 +63,38 @@
     align-items: center;
     text-align: center;
     place-items: center;
+    background-color: #52515197;
+    border: 3px solid #525151;
 }
 
-.maintxt {
-    height: 70vh;
-}
+#pdfContainer {
+    width: 210mm; /* Width of A4 page */
+    height: 297mm; /* Height of A4 page */
+    margin: 0 auto; /* Center the iframe horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the iframe vertically */
+  }
+
+  .box {
+    padding: 1vh;
+    height: 10vh;
+    background-color: rgba(36, 41, 41, 0.8);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    border: 0.5vh black solid;
+    border-radius: 3%;
+  }
+
+  iframe {
+    border: none;
+  }
+  canvas {
+    border: none;
+    color: white;
+    width: 100vw;
+    height:  50vh;
+  }

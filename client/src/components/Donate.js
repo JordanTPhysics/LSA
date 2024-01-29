@@ -4,7 +4,7 @@ export default function Donate() {
   return (
     <div className="frame">
       <h1>Donate</h1>
-      
+
       <h2>The Messenger of Allah ﷺ said:
         “The believer's shade on the Day of Resurrection will be his/her charity.” Hadith (Al-Tirmidhi)
       </h2>

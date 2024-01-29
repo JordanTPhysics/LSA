@@ -1,14 +1,14 @@
 :root {
-  
+
   --primary-color: rgba(8, 46, 5, 0.5);
   --red-color: rgba(233, 72, 8, 0.8);
 
 }
 
-#root{
+#root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
   min-width: 100vw;
 
 }
@@ -36,7 +36,24 @@ h1 {
 }
 
 /* SmartPhone */
-@media screen and (max-width: 499px) {}
+@media screen and (max-width: 499px) {
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: block;
+  }
+
+}
 
 /* Tablets */
 @media screen and (max-width: 899px) and (min-width: 500px) {}
@@ -62,7 +79,7 @@ header {
   height: fit-content;
   align-items: center;
   justify-content: center;
-  background-color: #52515197;
+  background-color: rgba(36, 41, 41, 0.8);
 
   color: white;
 }
@@ -82,19 +99,6 @@ a {
   text-decoration: none;
 }
 
-
-
-button,
-.button {
-  width: inherit;
-  background-color: azure;
-  text-align: left;
-  border: none;
-  transition: 1.5s ease-in-out;
-  -moz-transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: 20vw;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -107,7 +111,7 @@ ul {
 li {
   float: left;
   flex: 1;
-  /* Make each list item take up equal horizontal space */
+
 }
 
 li a {
@@ -149,15 +153,7 @@ img {
   color: white;
 }
 
-iframe {
-  padding-left: 10vw;
-  padding-right: 10vw;
-  width: 70vw;
-  height: 100vh;
-  background-color: whitesmoke;
-  border: #fff 2px;
-  border-radius: 2%;
-}
+
 
 .salaah {
   backface-visibility: hidden;
@@ -168,8 +164,6 @@ iframe {
   height: fit-content;
   align-items: center;
   justify-content: center;
+  background-color: rgba(36, 41, 41, 0.8);
 
-  color: white;
-  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
-    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
 }

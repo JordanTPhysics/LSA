@@ -19,11 +19,11 @@ class App extends React.Component {
     };
 
   }
-  
+
 
   selectRenderComponent = () => {
     switch (this.state.activeComponent) {
-      
+
       case "welcome":
         return <Welcome />;
       case "salaah":
@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   handleChange = (component, image) => {
-    this.setState({ activeComponent: component, activeBackground: image});
+    this.setState({ activeComponent: component, activeBackground: image });
   }
 
 
@@ -146,7 +146,7 @@ class App extends React.Component {
             </div>
           </div>
         </footer>
-        </div>
+      </div>
     );
   }
 }

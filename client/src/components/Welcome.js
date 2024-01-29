@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import QuranVerse from './QuranVerse';
+
 function Welcome() {
 
   const axios = require('axios');
@@ -17,7 +19,9 @@ function Welcome() {
   
   axios(config)
   .then((response) => {
-    console.log(JSON.stringify(response.data));
+    console.log(response.data)
+    return response.data
+    
   })
   .catch((error) => {
     console.log(error);
@@ -25,13 +29,11 @@ function Welcome() {
   
   }
     return (
-        <div>
+        <div className='frame'> 
           <h2>Welcome</h2>
 
-          <h3>Verse of the Day</h3>
-          <span>
           
-            </span>
+          <QuranVerse verseData={randomVerse()} />
           <p>
             The Lytham St. Annes Islamic Society (LSA) was established by a
             dedicated group of Muslims who recognized the importance of

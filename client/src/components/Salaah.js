@@ -1,19 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart,
-  TimeScale,
-  LinearScale,
-  CategoryScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Legend,
-  Filler
-} from "chart.js";
-import "chartjs-adapter-moment";
-
-Chart.register(TimeScale, LinearScale, PointElement, LineElement, CategoryScale, Tooltip, Legend, Filler);
+import TimeSeriesChart from "./TimeSeriesChart";
 
 const convertTimeStringToInteger = (timeString, salaah) => {
   if (!timeString || typeof timeString !== 'string') {
@@ -88,117 +74,27 @@ const Salaah = () => {
     fetchSalaahTimes();
   }, []);
 
-  const data = {
-    labels: salaahTimes.map((entry) => entry.Date),
-    datasets: [
-      {
-        label: `Fajr ${salaahTimes.map((entry) => entry.Fajr)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Fajr, "Fajr")),
-        fill: true,
-        borderColor: "rgba(192,57,57,1)",
-      },
-      {
-        label: `Sunrise ${salaahTimes.map((entry) => entry.Shuruq)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Shuruq, "Sunrise")),
-        fill: true,
-        borderColor: "rgba(0,192,192,1)",
-      },
-      {
-        label: `Dhuhr ${salaahTimes.map((entry) => entry.Dhuhr)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Dhuhr, "Dhuhr")),
-        fill: true,
-        borderColor: "rgba(255,255,255,1)",
-      },
-      {
-        label: `Asr ${salaahTimes.map((entry) => entry.Asr)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Asr, "Asr")),
-        fill: true,
-        borderColor: "rgba(75,192,75,1)",
-      },
-      {
-        label: `Maghrib ${salaahTimes.map((entry) => entry.Maghrib)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Maghrib, "Maghrib")),
-        fill: true,
-        borderColor: "rgba(201,19,19, 1)",
-      },
-      {
-        label: `Isha ${salaahTimes.map((entry) => entry.Isha)}`,
-        data: salaahTimes.map((entry) => convertTimeStringToInteger(entry.Isha, "Isha")),
-        fill: true,
-        borderColor: "rgba(7,19,192,1)",
-      },
-    ],
-  };
-
-  const options = {
-    type: "line",
-    data: data,
-    options: {
-
-      scales: {
-        x: {
-          type: "time",
-          time: {
-            unit: "day",
-          },
-          position: "top",
-        },
-        y: {
-          type: "linear",
-          position: "left",
-          beginAtZero: true,
-          display: false
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-          position: 'top',
-          labels: {
-            color: 'rgb(255, 99, 132)'
-          }
-        },
-        tooltip: {
-          position: 'nearest',
-          enabled: true,
-          mode: 'index',
-          intersect: false,
-          callbacks:
-          {
-            label: function (context) {
-              console.log(context);
-              var index = context.dataIndex;
-              var day = salaahTimes[index].Date;
-
-              var fajr = salaahTimes[index].Fajr;
-              var sunrise = salaahTimes[index].Shuruq;
-              var dhuhr = salaahTimes[index].Dhuhr;
-              var asr = salaahTimes[index].Asr;
-              var maghrib = salaahTimes[index].Maghrib;
-              var isha = salaahTimes[index].Isha;
-
-              var returnString = `Date: ${day}\nFajr: ${fajr}\nSunrise: ${sunrise}\nDhuhr: ${dhuhr}\nAsr: ${asr}\nMaghrib: ${maghrib}\nIsha: ${isha}`
-
-              return returnString;
-            }
-          }
-        }
+  const getJamaatTimesToday = () => {
+    const today = new Date();
+    var todayTimes = salaahTimes.filter((entry) => {
+      const entryDate = new Date(entry.Date);
+      if (entryDate.getDate() === today.getDate() && entryDate.getMonth() === today.getMonth()) {
+        return { Fajr: entry.Fajr, Shuruq: entry.Shuruq, Dhuhr: entry.Dhuhr, Asr: entry.Asr, Maghrib: entry.Maghrib, Isha: entry.Isha };
       }
-    },
-  };
-
-
+    });
+  }
 
   return (
     <>
-      <div className="row">
-        <h4> A yearly graph of the Salaah times on the Fylde Coast. Jamaat Timetable found below</h4>
+      <div className="row frame">
+      <h3> A yearly graph of the Salaah times on the Fylde Coast. Jamaat Timetable found below</h3>
+
+        <TimeSeriesChart data={salaahTimes} yAxisLabel="Salaah Times - Blackpool" />
       </div>
       <div className="row">
-        <Line data={data} options={options} />
-      </div>
-      <div className="row">
+        <div id="pdfContainer" className="col-md-4 "></div>
         <iframe src="resources/Timetable.pdf" />
+
       </div>
     </>
   );

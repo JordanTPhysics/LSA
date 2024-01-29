@@ -1,181 +1,71 @@
+:root {
+
+  --primary-color: rgba(8, 46, 5, 0.5);
+  --red-color: rgba(233, 72, 8, 0.8);
+
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+
+}
+
 body,
 html {
-  padding: 0;
+  height: 100%;
   margin: 0;
-  background-position: center;
-  background-size: 100vw;
-  background-color: darkblue;
-  background-image: url("images/angle.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  padding: 0;
   width: 100%;
   overflow-x: hidden;
 }
+
 
 * {
   font-family: "Nunito", sans-serif;
   text-align: center;
   position: relative;
   font-weight: bold;
-  
+  color: rgba(245, 245, 245, 0.927);
 }
+
+h1 {
+  font-size: 3vh;
+}
+
 /* SmartPhone */
 @media screen and (max-width: 499px) {
-  h2,
-  .neon-text {
-    font-size: 0.75rem; /* Adjust font size for smaller screens */
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
   }
-  .itemlist {
-    top: 30vh;
-    position: relative;
-    left: 0vw;
-    width: 30vw;
-  }
-  header {
-    position: relative;
-  }
-  .menu {
-    top: 0vh;
-    width: 70vw;
-  }
-  .list-item {
-    margin: 0.5vh;
-    padding: 1vh;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
     display: block;
   }
-  .title {
-    height: 10vh;
-    border: 2px solid brown;
-    border-radius: 5%;
-  }
-  button {
-    padding: 0;
-    margin: 0.5vh;
-    font-size: small;
-  }
-  .footer{
-    margin-top: 5vh;
-  }
-}
-/* Tablets */
-@media screen and (max-width: 899px) and (min-width: 500px) {
-  .title {
-    height: 20vh;
-  }
 
-  .neon-text {
-    font-size: 1rem; /* Adjust font size for larger screens */
-  }
-  .itemlist {
-    top: 35vh;
-    left: 5vw;
-    width: 20vw;
-    position: relative;
-  }
-  header {
-    position: fixed;
-  }
-  .footer{
-    margin-top: 20vh;
-  }
-  .list-item {
-    display: grid;
-    white-space: unset;
-    padding: 2vh;
-    margin: 0.75vh;
-  }
-  .menu {
-    top: 35vh;
-    width: 50vw;
-  }
 }
+
+/* Tablets */
+@media screen and (max-width: 899px) and (min-width: 500px) {}
+
 /* Laptop */
-@media screen and (min-width: 900px) and (max-width: 1319px){
-  h2,
-  .neon-text {
-    font-size: 1.25rem; /* Adjust font size for larger screens */
-  }
-  .itemlist {
-    top: 40vh;
-    left: 5vw;
-    width: 20vw;
-    position: relative;
-  }
-  header {
-    position: fixed;
-  }
-  .footer{
-    margin-top: 30vh;
-  }
-  .list-item {
-    display: grid;
-    white-space: unset;
-    padding: 2vh;
-    margin: 1vh;
-  }
-  .menu {
-    top: 30vh;
-    left: 50vw;
-    width: 40vw;
-  }
-  .title {
-    height: 30vh;
-    text-shadow: brown;
-  }
-}
+@media screen and (min-width: 900px) and (max-width: 1319px) {}
 
 /* Desktop */
-@media screen and (min-width: 1319px){
-  h2,
-  .neon-text {
-    font-size: 2rem; /* Adjust font size for larger screens */
-  }
-  .itemlist {
-    font-size: 3vh;
-    top: 40vh;
-    left: 5vw;
-    width: 20vw;
-    position: relative;
-  }
-  header {
-    position: fixed;
-  }
-  .footer{
-    margin-top: 40vh;
-  }
-  .list-item {
-    display: grid;
-    white-space: unset;
-    padding: 2vh;
-    margin: 1vh;
-  }
-  .menu {
-    font-size: 2vh;
-    top: 35vh;
-    left: 70vw;
-    width: 50vw;
-  }
-  .title {
-    height: 20vh;
-    text-shadow: brown;
-  }
-}
+@media screen and (min-width: 1319px) {}
 
-.menu {
-  z-index: 999;
-  left: 25vw;
-  height: max-content;
-}
-
-.itemlist {
-  z-index: 1000;
-  position: fixed;
-  border-radius: 3%;
-  background-color: rgb(152, 39, 20);
-  display: block;
-  height: fit-content;
-  animation: entrance 1s ease-in-out;
+.row {
+  width: 100vw;
 }
 
 header {
@@ -189,140 +79,91 @@ header {
   height: fit-content;
   align-items: center;
   justify-content: center;
-  background-color: rgb(8, 46, 5);
+  background-color: rgba(36, 41, 41, 0.8);
+
   color: white;
 }
 
-.neon-text {
-  color: #fff; /* Text color */
-  text-transform: uppercase; /* Optional: Uppercase text for a neon sign effect */
-
-  /* Neon glow effect using text-shadow */
-  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
-    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
-
-  /* Optional animation for a flickering effect */
-  animation: flicker 2s infinite alternate;
-}
-
-.neon-img {
-  box-shadow: 0 0 10px rgba(235, 215, 5, 0.8), 0 0 20px rgba(235, 215, 5, 0.8),
-    0 0 30px rgba(235, 215, 5, 0.8), 0 0 40px rgba(235, 215, 5, 0.8);
-  animation: flicker 0.1s infinite alternate;
-}
-
-@keyframes flicker {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
+p {
+  font-size: 2vh;
 }
 
 .phone-number {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Use the parent element's text color */
+  text-decoration: none;
+  /* Remove underline */
+  color: inherit;
+  /* Use the parent element's text color */
 }
 
 a {
   text-decoration: none;
 }
 
-.award{
-  cursor: pointer;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  display: flex;
 }
 
-button,
-.button {
-  width: inherit;
-  background-color: azure;
-  text-align: left;
-  border: none;
-  
+li {
+  float: left;
+  flex: 1;
 
-  transition: 1.5s ease-in-out;
-  -moz-transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: 20vw;
 }
 
-button:hover {
+li a {
+  display: block;
+  color: white;
   text-align: center;
-  color: red;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #555;
+  /* Background color on hover */
 }
 
 img {
-  width: 15vw;
+  width: 20vw;
+  height: 20vw;
+  background-color: whitesmoke;
+  border: #fff 2px;
+  border-radius: 10%;
 }
 
-ol {
-  width: 100%; /* Set the width of the parent to 100% */
-  padding: 0;
-  list-style-type: none;
-  overflow: auto;
-  display: flex;
-  flex-wrap: wrap; /* Wrap items to the next row if they don't fit horizontally */
-  justify-content: flex-start; /* Start from the left */
-  align-items: flex-start; /* Align items to the top of the container */
-  flex-direction: column;
-  padding-left: 0;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
-  padding-right: 5vh;
-}
-
-.list-item {
-  width: inherit;
-  grid-template-columns: auto 1fr auto; /* Create a 3-column layout */
-  grid-gap: 10px; /* Add spacing between columns (adjust as needed) */
-  align-items: center;
-  transition: ease 0.5s;
-  color: whitesmoke;
-  text-shadow: 0 0 10px black;
-  background-color: rgb(152, 39, 20);
-  border: 0.5vh solid rgb(8, 46, 5);
-  border-radius: 5%;
-  font-weight: bold;
-  padding-left: 0;
-  padding-bottom: 3vh;
-  margin-left: 0;
-}
-
-li:hover, li:focus, li:active{
-  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
-    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
-}
-
-li{
-  text-shadow: 0 0 10px rgba(7, 5, 0, 0.8), 0 0 20px rgba(7, 5, 0, 0.8),
-    0 0 30px rgba(7, 5, 0, 0.8), 0 0 40px rgba(7, 5, 0, 0.8);
-}
-
-.id {
-  grid-column: 1 / span 1; /* Expand to fit content */
-  font-weight: bold;
-}
-
-.divider {
-  grid-column: 2 / span 1; /* Always occupies one column */
-  background-color: goldenrod;
-  height: 0.2vh;
-
-  margin: 0 10px; /* Add spacing on both sides of the divider (adjust as needed) */
-}
-
-.value {
-  grid-column: 3 / span 1; /* Expand to fit content */
-  font-weight: bold;
-}
-
-.footer{
+.menu-box {
+  width: 100vw;
+  height: 7vh;
+  background-color: rgba(72, 61, 139, 0.8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: fit-content;
   align-items: center;
   justify-content: center;
-  background-color: rgb(8, 46, 5);
+
+
   color: white;
-  text-shadow: 0 0 10px rgba(217, 255, 0, 0.8), 0 0 20px rgba(217, 255, 0, 0.8),
-    0 0 30px rgba(217, 255, 0, 0.8), 0 0 40px rgba(217, 255, 0, 0.8);
+}
+
+
+
+.salaah {
+  backface-visibility: hidden;
+}
+
+.footer {
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(36, 41, 41, 0.8);
+
 }
