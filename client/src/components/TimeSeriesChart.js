@@ -38,12 +38,14 @@ const TimeSeriesChart = ({ data, yAxisLabel }) => {
             title: {
               display: true,
               text: 'Date',
+              color: 'white',
             },
           },
           y: {
             title: {
               display: true,
               text: yAxisLabel,
+              color: 'white',
               
             },
             ticks: {

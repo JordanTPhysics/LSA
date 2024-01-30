@@ -94,10 +94,9 @@ class App extends React.Component {
             <li><a onClick={() => this.handleChange("donate", "/images/DUA.jpg")}>Donate</a></li>
             <li><a onClick={() => this.handleChange("contact", "/images/salaah.jpg")}>Contact</a></li>
           </ul>
-
-
         </div>
         <div className="row main">
+          <h1>Jumu'ah Salaah 13:15</h1>
           <div className="col-md-12">
             {this.selectRenderComponent()}
           </div>

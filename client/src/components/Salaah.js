@@ -64,40 +64,45 @@ const Salaah = () => {
   useEffect(() => {
     const today = new Date();
 
-// Get day, month, and year components
-const day = today.getDate();
-const month = today.getMonth() + 1; // Months are zero-indexed, so add 1
-const year = today.getFullYear();
+    // Get day, month, and year components
+    const day = today.getDate();
+    const month = today.getMonth() + 1; // Months are zero-indexed, so add 1
+    const year = today.getFullYear();
 
-// Ensure day and month are formatted as two digits
-const formattedDay = day < 10 ? `0${day}` : day;
-const formattedMonth = month < 10 ? `0${month}` : month;
+    // Ensure day and month are formatted as two digits
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
 
-// Create the formatted date string
-const formattedDate = `${formattedDay}/${formattedMonth}/${year}`;
+    // Create the formatted date string
+    const formattedDate = `${formattedDay}/${formattedMonth}/${year}`;
     const todaySalaahTimes = salaahTimes.find(entry => entry.Date === formattedDate);
     setTodaySalaahTimes(todaySalaahTimes);
   }, [salaahTimes]);
 
-  console.log(salaahTimes);
-  console.log(todaySalaahTimes);
 
-  
 
   return (
     <>
-      {/* <div className="row">
+      <div className="row">
+        <h2>Salaah Times for Today</h2>
+        <br />
+        {todaySalaahTimes ? (
+          <ul>
+            <li>Fajr: {todaySalaahTimes.Fajr}</li>
+            <li>Dhuhr: {todaySalaahTimes.Dhuhr}</li>
+            <li>Asr: {todaySalaahTimes.Asr}</li>
+            <li>Maghrib: {todaySalaahTimes.Maghrib}</li>
+            <li>Isha: {todaySalaahTimes.Isha}</li>
+          </ul>
+        ) : (
+          <ul>
+            <li>Loading...</li>
+          </ul>
+        )}
+      </div>
 
-          <h3>Today's Salaah Times</h3>
-          <p>Fajr: {todaySalaahTimes.Fajr}</p>
-          <p>Dhuhr: {todaySalaahTimes.Dhuhr}</p>
-          <p>Asr: {todaySalaahTimes.Asr}</p>
-          <p>Maghrib: {todaySalaahTimes.Maghrib}</p>
-          <p>Isha: {todaySalaahTimes.Isha}</p>
-
-        </div> */}
       <div className="row frame">
-      <h3> A yearly graph of the Salaah times on the Fylde Coast. Jamaat Timetable found below</h3>
+        <h3> A yearly graph of the Salaah times on the Fylde Coast. Jamaat Timetable found below</h3>
 
         <TimeSeriesChart data={salaahTimes} yAxisLabel="Salaah Times - Blackpool" />
       </div>
