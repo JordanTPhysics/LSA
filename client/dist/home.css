@@ -103,8 +103,8 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: #333;
+  flex-wrap: wrap;
   display: flex;
 }
 
@@ -124,7 +124,6 @@ li a {
 
 li a:hover {
   background-color: #555;
-  /* Background color on hover */
 }
 
 img {
@@ -139,17 +138,14 @@ img {
   width: 100vw;
   height: 7vh;
   background-color: rgba(72, 61, 139, 0.8);
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
   top: 0;
   left: 0;
   width: 100vw;
   height: fit-content;
-  align-items: center;
-  justify-content: center;
-  grid-auto-flow: row;
-
+  
   color: white;
 }
 

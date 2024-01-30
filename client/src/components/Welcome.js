@@ -30,7 +30,7 @@ function Welcome() {
     return (
         <div className='frame'> 
           <h2>Welcome</h2>
-
+        
           
           <QuranVerse verseData={randomVerse()} />
           <p>
