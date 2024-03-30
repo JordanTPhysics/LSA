@@ -7,8 +7,7 @@ import Madrasah from "./components/Madrasah";
 import Events from "./components/Events";
 import Donate from "./components/Donate";
 import Contact from "./components/Contact";
-
-
+import Quran from "./components/Quran";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +18,6 @@ class App extends React.Component {
     };
 
   }
-
 
   selectRenderComponent = () => {
     switch (this.state.activeComponent) {
@@ -36,6 +34,8 @@ class App extends React.Component {
         return <Donate />;
       case "contact":
         return <Contact />;
+        case "quran":
+          return <Quran />;
       default:
         return <Welcome />;
     }
@@ -87,12 +87,13 @@ class App extends React.Component {
 
         <div className="row menu-box">
           <ul>
-            <li><a onClick={() => this.handleChange("welcome", "/images/DUA.jpg")}>Welcome</a></li>
-            <li><a onClick={() => this.handleChange("madrasah", "/images/Quran.jpg")}>Madrasah</a></li>
-            <li><a onClick={() => this.handleChange("salaah", "/images/salaah.jpg")}>Salaah</a></li>
-            <li><a onClick={() => this.handleChange("events", "/images/DUA.jpg")}>Events</a></li>
-            <li><a onClick={() => this.handleChange("donate", "/images/DUA.jpg")}>Donate</a></li>
-            <li><a onClick={() => this.handleChange("contact", "/images/salaah.jpg")}>Contact</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("welcome", "/images/DUA.jpg")}>Welcome</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("madrasah", "/images/Quran.jpg")}>Madrasah</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("salaah", "/images/salaah.jpg")}>Salaah</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("events", "/images/DUA.jpg")}>Events</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("donate", "/images/DUA.jpg")}>Donate</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("contact", "/images/salaah.jpg")}>Contact</a></li>
+            <li className="mainmenu"><a onClick={() => this.handleChange("quran", "/images/Quran.jpg")}>Quran API</a></li>
           </ul>
         </div>
         <div className="row main">
@@ -150,8 +151,5 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  backgroundImage: state.backgroundImage,
-});
 
 export default App;

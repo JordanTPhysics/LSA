@@ -1,6 +1,6 @@
 :root {
 
-  --primary-color: rgba(8, 46, 5, 0.5);
+  --primary-color: #333;
   --red-color: rgba(233, 72, 8, 0.8);
 
 }
@@ -20,6 +20,11 @@ html {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+}
+
+.col-md-12 {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
 }
 
 
@@ -156,6 +161,7 @@ img {
 }
 
 .footer {
+  position: absolute;
   width: 100vw;
   height: fit-content;
   align-items: center;
