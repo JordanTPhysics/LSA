@@ -35,7 +35,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - Chart.js (for data visualization)
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is for the community.
 
 ## Contact
 If you have any questions or suggestions regarding this project, feel free to contact the maintainer at jordantphysics@example.com.
