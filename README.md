@@ -18,16 +18,6 @@ To run this project locally, follow these steps:
 4. Start the development server with `npm start`.
 5. Open your browser and visit `http://localhost:3000` to view the website.
 
-## Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
-1. Fork the repository on GitHub.
-2. Create a new branch with a descriptive name (`git checkout -b feature/my-new-feature`).
-3. Make your changes and ensure that the code lints successfully (`npm run lint`).
-4. Test your changes locally to ensure they work as expected.
-5. Commit your changes (`git commit -am 'Add some feature'`).
-6. Push to the branch (`git push origin feature/my-new-feature`).
-7. Create a new Pull Request on GitHub.
-
 ## Dependencies
 - React
 - React Router
@@ -38,6 +28,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 This project is for the community.
 
 ## Contact
-If you have any questions or suggestions regarding this project, feel free to contact the maintainer at jordantphysics@example.com.
+If you have any questions or suggestions regarding this project, feel free to contact the maintainer at jordanthij@gmail.com
+.
 
 Thank you for using the Lytham St. Annes Islamic Centre Website! We hope it serves as a valuable resource for the community.
